@@ -22,14 +22,29 @@
          TextureView, etc.
         -->
 
-        <ImageView
-            android:id="@+id/fullscreen_content"
-            android:layout_width="32px"
-            android:layout_height="8px"
-            android:gravity="center"
-    		android:background="#0000cc"
-            android:keepScreenOn="true"/>
-        
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0000cc" >
+
+
+            <jp.codedesign.simi_lator.DrawView
+                android:id="@+id/drawview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffff00"
+                android:gravity="center">
+            </jp.codedesign.simi_lator.DrawView>
+
+            <ImageView
+                android:id="@+id/fullscreen_content"
+                android:layout_width="32px"
+                android:layout_height="8px"
+                android:gravity="center"
+                android:keepScreenOn="true" />
+        </FrameLayout>
+
         <TextView
             android:id="@+id/fullscreen_textview"
             android:layout_width="match_parent"
@@ -41,7 +56,6 @@
             android:textColor="#33b5e5"
             android:textSize="50sp"
             android:textStyle="bold" />
-        
     </LinearLayout>
 
     <!--

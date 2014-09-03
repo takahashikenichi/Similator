@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import jp.codedesign.simi_lator.util.SystemUiHider;
@@ -27,6 +28,10 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -120,13 +125,12 @@ public class MainActivity extends Activity {
 				bitmapFatoryOptions.inSampleSize = previewWidth / 32; // 強制的に横32に設定
 				Bitmap bmp = BitmapFactory.decodeByteArray(jdata, 0,
 						jdata.length, bitmapFatoryOptions);
-				
+
 				Matrix m = new Matrix();
 				m.postRotate(90);
-				Bitmap rotatedBitmap = Bitmap
-						.createBitmap(bmp, 0, 0, bmp.getWidth(),
-								bmp.getHeight(), m, false);
-				
+				Bitmap rotatedBitmap = Bitmap.createBitmap(bmp, 0, 0,
+						bmp.getWidth(), bmp.getHeight(), m, false);
+
 				setMosaic(rotatedBitmap);
 			} catch (Exception e) {
 			}
@@ -140,17 +144,25 @@ public class MainActivity extends Activity {
 		if (controlLayout != null) {
 			controlLayout.setImageBitmap(bmp);
 		}
+
+		drawView.setBitmap(bmp);
 	}
 
 	ImageView controlLayout;
-
+	FrameLayout gridLayout;
+	ArrayList<String> list;
+	DrawView drawView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main);
 		controlLayout = (ImageView) findViewById(R.id.fullscreen_content);
-
+		drawView = (DrawView) findViewById(R.id.drawview);
+		
+		list = new ArrayList<String>();
+		
 		SurfaceView mySurfaceView = (SurfaceView) findViewById(R.id.surface_view);
 		SurfaceHolder holder = mySurfaceView.getHolder();
 		holder.addCallback(mSurfaceListener);
