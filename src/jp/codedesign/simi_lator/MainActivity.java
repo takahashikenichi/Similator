@@ -121,18 +121,20 @@ public class MainActivity extends Activity {
 						previewHeight), 100, baos);
 				byte[] jdata = baos.toByteArray();
 				BitmapFactory.Options bitmapFatoryOptions = new BitmapFactory.Options();
-				bitmapFatoryOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-				bitmapFatoryOptions.inSampleSize = previewWidth / 32; // 強制的に横32に設定
+				bitmapFatoryOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+//				bitmapFatoryOptions.inSampleSize = previewWidth / 32; // 強制的に横32に設定 -> Bitmapの最小サイズが 80 x 60 の模様
 				Bitmap bmp = BitmapFactory.decodeByteArray(jdata, 0,
 						jdata.length, bitmapFatoryOptions);
 
 				Matrix m = new Matrix();
 				m.postRotate(90);
+//				m.postScale(0.1f, 0.1f);
 				Bitmap rotatedBitmap = Bitmap.createBitmap(bmp, 0, 0,
 						bmp.getWidth(), bmp.getHeight(), m, false);
 
 				setMosaic(rotatedBitmap);
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 
 			myCamera.setPreviewCallback(this);
