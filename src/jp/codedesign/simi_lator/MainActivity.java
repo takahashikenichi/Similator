@@ -144,10 +144,9 @@ public class MainActivity extends Activity {
 
 	private void setMosaic(Bitmap bmp) {
 		if (controlLayout != null) {
-			controlLayout.setImageBitmap(bmp);
+//			controlLayout.setImageBitmap(bmp);
+			drawView.setBitmap(bmp);
 		}
-
-		drawView.setBitmap(bmp);
 	}
 
 	ImageView controlLayout;
