@@ -28,13 +28,12 @@
             android:layout_weight="1"
             android:background="#0000cc" >
 
-
             <jp.codedesign.simi_lator.DrawView
                 android:id="@+id/drawview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#ffff00"
-                android:gravity="center">
+                android:gravity="center" >
             </jp.codedesign.simi_lator.DrawView>
 
             <ImageView
@@ -55,37 +54,22 @@
             android:text="@string/dummy_content"
             android:textColor="#33b5e5"
             android:textSize="50sp"
+            android:visibility="gone"
             android:textStyle="bold" />
-    </LinearLayout>
 
-    <!--
-         This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows.
-    -->
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true" >
-
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent" >
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fitsSystemWindows="true" >
 
             <Button
                 android:id="@+id/dummy_button"
                 style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/dummy_button" />
-        </LinearLayout>
-    </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
 
 </FrameLayout>
